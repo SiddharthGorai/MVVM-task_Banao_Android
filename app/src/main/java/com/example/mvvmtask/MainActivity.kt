@@ -6,6 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmtask.databinding.ActivityMainBinding
 import com.example.mvvmtask.viewModel.myViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         //Paging Adapter
         val adapter = pagingDataAdapter()
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = adapter
+        recyclerView = binding.recyclerView
+        val layoutManager = GridLayoutManager(this,2)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
         viewModel.photos.observe(this,
             Observer { list ->
                 with(adapter){
