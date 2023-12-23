@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mvvmtask.Data.Photo
 import com.example.mvvmtask.databinding.ImgItemBinding
 
 class pagingDataAdapter: PagingDataAdapter<Photo,pagingDataAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {

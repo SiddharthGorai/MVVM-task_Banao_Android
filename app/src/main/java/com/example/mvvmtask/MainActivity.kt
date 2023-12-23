@@ -7,7 +7,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import com.example.mvvmtask.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
+import com.example.mvvmtask.viewModel.myViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

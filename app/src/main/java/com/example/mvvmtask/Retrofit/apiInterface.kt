@@ -1,6 +1,6 @@
-package com.example.mvvmtask
+package com.example.mvvmtask.Retrofit
 
-import retrofit2.Response
+import com.example.mvvmtask.Data.photoData
 import retrofit2.http.GET
 
 interface apiInterface {

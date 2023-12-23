@@ -1,4 +1,4 @@
-package com.example.mvvmtask
+package com.example.mvvmtask.Data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

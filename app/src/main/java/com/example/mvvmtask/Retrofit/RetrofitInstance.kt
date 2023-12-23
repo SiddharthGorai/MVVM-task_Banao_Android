@@ -1,4 +1,4 @@
-package com.example.mvvmtask
+package com.example.mvvmtask.Retrofit
 
 import dagger.Module
 import dagger.Provides
