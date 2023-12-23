@@ -53,6 +53,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.annotation:annotation:1.7.1")
 
+    //nav bar
+    implementation ("com.google.android.material:material:1.12.0-alpha02")
+
+    // Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
@@ -61,18 +65,17 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
+    //RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-    // For control over item selection of both touch and mouse driven selection
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
+    //Paging
     val paging_version = "3.2.1"
-
     implementation("androidx.paging:paging-runtime:$paging_version")
-
-    val lifecycle_version = "2.6.2"
 
 
     // ViewModel
+    val lifecycle_version = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
@@ -83,6 +86,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+
     //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }
