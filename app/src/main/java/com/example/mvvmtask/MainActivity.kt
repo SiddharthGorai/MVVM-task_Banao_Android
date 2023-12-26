@@ -1,16 +1,13 @@
 package com.example.mvvmtask
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.NavHostFragment
 import com.example.mvvmtask.databinding.ActivityMainBinding
-import com.example.mvvmtask.viewModel.myViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,11 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: myViewModel by viewModels()
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
-    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,28 +26,59 @@ class MainActivity : AppCompatActivity() {
 
         //Left Nav Bar
         toolbar = binding.Toolbar
-        setSupportActionBar(toolbar)
-
+        toolbar.setTitle("mvvmTask2");
+//        setSupportActionBar(toolbar)
+        toolbar.inflateMenu(R.menu.search_menu)
         drawerLayout = binding.DrawerLayout
-        actionBarDrawerToggle= ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_open,R.string.nav_close)
+        actionBarDrawerToggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.nav_open,
+            R.string.nav_close
+        )
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 
-        //Paging Adapter
-        val adapter = pagingDataAdapter()
-        recyclerView = binding.recyclerView
-        val layoutManager = GridLayoutManager(this,2)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
-        viewModel.photos.observe(this,
-            Observer { list ->
-                with(adapter){
-                    adapter.submitData(lifecycle = lifecycle,list)
+        toolbar.setOnMenuItemClickListener{menuItem ->
+            when(menuItem.itemId){
+                R.id.searchBar -> {
+                    val searchView = menuItem.actionView as SearchView
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            if (query != null){
+                                val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_main_nav_host_fragment) as NavHostFragment
+                                val navController = navHostFragment.navController
+                                navController.navigate(R.id.fragmentSearch)
+
+                                val mFragmentTransaction = supportFragmentManager.beginTransaction()
+                                val mFragment = fragmentSearch()
+                                val mBundle = Bundle()
+                                mBundle.putString("mText", query)
+                                mFragment.arguments = mBundle
+                                mFragmentTransaction.add(R.id.frameLayout, mFragment).commit()
+
+
+                            }
+                            return true
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            return true
+                        }
+
+                    })
+                    true
                 }
 
+                else -> {
+                    false
+                }
+            }
+        }
 
-        })
+        }
 
     }
-}
+

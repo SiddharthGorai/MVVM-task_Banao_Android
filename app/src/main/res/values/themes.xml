@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.MvvmTask" parent="Base.Theme.MvvmTask" />
+
+
 </resources>

@@ -2,9 +2,17 @@ package com.example.mvvmtask.Retrofit
 
 import com.example.mvvmtask.Data.photoData
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface apiInterface {
 
-    @GET("?method=flickr.photos.getRecent&per_page=20&page=1&api_key=6f102c62f41998d151e5a1b48713cf13&format=json&nojsoncallback=1&extras=url_s")
-    suspend fun getPhotos(): photoData
+    @GET("rest")
+    suspend fun getPhotos(
+        @Query("method") method: String,
+        @Query("api_key") api_key: String,
+        @Query("format") format: String,
+        @Query("tags") tags: String,
+        @Query("extras") extras: String,
+        @Query("nojsoncallback") nojsoncallback: Int
+    ): photoData
 }

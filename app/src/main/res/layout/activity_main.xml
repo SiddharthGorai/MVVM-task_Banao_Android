@@ -16,15 +16,17 @@
             android:id="@+id/Toolbar"
             android:background="@color/Primary_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/activity_main_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/img_item" />
+            android:layout_height="wrap_content"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

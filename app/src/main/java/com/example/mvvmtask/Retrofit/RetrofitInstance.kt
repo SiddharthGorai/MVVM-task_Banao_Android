@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
-private const val BASE_URL = "https://api.flickr.com/services/rest/"
+private const val BASE_URL = "https://api.flickr.com/services/"
 
 @Module
 @InstallIn(SingletonComponent::class)

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragmentSearch">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/img_item"/>
+    <ProgressBar
+        android:id="@+id/progBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/txtErr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Some error occured!"
+        android:layout_above="@+id/btnRetry"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnRetry"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/retry"/>
+    <TextView
+        android:id="@+id/txtNores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No results found!"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</RelativeLayout>
