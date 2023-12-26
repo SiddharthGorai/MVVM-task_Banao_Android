@@ -96,8 +96,6 @@ class MainActivity : AppCompatActivity() {
                             { query ->
 
                                 if (query != null) {
-                                    Toast.makeText(this, query, Toast.LENGTH_LONG).show()
-//                                    Log.d("text", query)
                                     val mFragmentTransaction =
                                         supportFragmentManager.beginTransaction()
                                     val mFragment = fragmentSearch()
@@ -105,8 +103,6 @@ class MainActivity : AppCompatActivity() {
                                     mBundle.putString("mText", query)
                                     mFragment.arguments = mBundle
                                     mFragmentTransaction.replace(R.id.frameLayout, mFragment).commit()
-
-//                                    viewModel.searchPhotos(query)
                                 }
                             }, {
 
