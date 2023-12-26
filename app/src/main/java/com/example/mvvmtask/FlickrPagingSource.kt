@@ -4,14 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.mvvmtask.Data.Photo
-import com.example.mvvmtask.Data.photoData
 import com.example.mvvmtask.Retrofit.apiInterface
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.HttpException
-import retrofit2.Response
 import java.io.IOException
-import javax.inject.Inject
 
 private const val STARTING_PAGE = 1
 class FlickrPagingSource(
@@ -23,7 +18,6 @@ class FlickrPagingSource(
     private val noJsonCallBack = 1
 //    private val tags = "dogs"
     private val extras = "url_s"
-    private val searchList = MutableLiveData<Photo>()
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         val position = params.key ?: STARTING_PAGE
 

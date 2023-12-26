@@ -39,9 +39,7 @@ class fragmentSearch : Fragment(R.layout.fragment_search) {
         recyclerView = binding.fragRecyclerView
         val layoutManager = GridLayoutManager(context, 2)
         recyclerView.setHasFixedSize(true)
-//        recyclerView.adapter = adapter.withLoadStateFooter(
-//            footer = loadStateAdapter { adapter.retry() }
-//        )
+
         binding.btnRetry.setOnClickListener {
             adapter.retry()
         }

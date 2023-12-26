@@ -1,16 +1,13 @@
 package com.example.mvvmtask
 
 
-import android.database.Observable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.mvvmtask.databinding.ActivityMainBinding
 import com.example.mvvmtask.viewModel.myViewModel
@@ -58,11 +55,6 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager.findFragmentById(R.id.activity_main_nav_host_fragment) as NavHostFragment
                     val navController = navHostFragment.navController
                     navController.navigate(R.id.fragmentSearch)
-
-//                    val navHostFragment =
-//                        supportFragmentManager.findFragmentById(R.id.activity_main_nav_host_fragment) as NavHostFragment
-//                    val navController = navHostFragment.navController
-//                    navController.navigate(R.id.fragmentSearch)
 
 
                     val searchView = menuItem.actionView as SearchView
