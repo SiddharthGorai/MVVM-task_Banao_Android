@@ -26,10 +26,10 @@ class fragmentHome : Fragment(R.layout.fragment_home) {
         recyclerView = binding.recyclerView
         val layoutManager = GridLayoutManager(context, 2)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter.withLoadStateFooter(
-            footer = loadStateAdapter { adapter.retry() }
-
-        )
+//        recyclerView.adapter = adapter.withLoadStateFooter(
+//            footer = loadStateAdapter { adapter.retry() }
+//
+//        )
 
         val footerAdapter = loadStateAdapter {adapter.retry()}
         recyclerView.adapter = adapter.withLoadStateFooter(footer = footerAdapter)
@@ -46,9 +46,12 @@ class fragmentHome : Fragment(R.layout.fragment_home) {
 
         viewModel.photos.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
+
         }
 
+
     }
+
 
 
     override fun onDestroyView() {
